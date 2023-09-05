@@ -1,0 +1,27 @@
+# Ignorar archivos de configuración
+.vscode/
+.idea/
+
+# Ignorar archivos de construcción y dependencias generadas
+node_modules/
+dist/
+build/
+*.log
+
+# Ignorar archivos de entorno y secretos
+.env
+.env.local
+.env.*.local
+
+# Ignorar archivos de registro y caché
+logs/
+.cache/
+
+# Ignorar archivos de respaldo
+*.bak
+*.backup
+*.swp
+
+# Ignorar archivos y directorios específicos
+# /path/to/ignored_directory/
+# file-to-ignore.extension

@@ -1,0 +1,55 @@
+
+const script = `
+-- CREAR BASE DE DATOS
+
+CREATE SCHEMA IF NOT EXISTS ejemplo;
+
+--  TABLA CLIENTE
+
+CREATE TABLE IF NOT EXISTS ejemplo.cliente (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(255) NOT NULL,
+  correo VARCHAR(255) NOT NULL,
+  direccion VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id));
+
+-- TABLA PRODUCTO
+
+CREATE TABLE IF NOT EXISTS ejemplo.PRODUCTO (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(255) NOT NULL,
+  descripcion TEXT NOT NULL,
+  precio DECIMAL(10,2) NOT NULL,
+  stock INTEGER NOT NULL,
+  PRIMARY KEY (id));
+
+
+-- TABLA PEDIDO
+
+CREATE TABLE IF NOT EXISTS ejemplo.PEDIDO (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  fecha_pedido VARCHAR(45) NOT NULL,
+  cliente_id INTEGER NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (cliente_id)
+  REFERENCES ejemplo.CLIENTE (id)
+  );
+
+
+-- TABLA DETALLE PEDIDO
+
+CREATE TABLE IF NOT EXISTS ejemplo.DETALLE_PEDIDO (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  cantidad INTEGER NOT NULL,
+  producto_id INTEGER NOT NULL,
+  pedido_id INTEGER NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (producto_id) REFERENCES ejemplo.PRODUCTO (id),
+  FOREIGN KEY (pedido_id) REFERENCES ejemplo.PEDIDO (id)
+);
+`;
+
+module.exports = script;
+
+
+
