@@ -34,21 +34,21 @@ CALL agregarHorario(1,100,"17:00-18:40"); -- dia fuera de rango
 
 -- ASIGNAR CURSO ESTUDIANTE
 -- codcurso, ciclo, seccion, carnet
-CALL asignarCursoEstudiante(101,'2S','a',202000001); -- AREA COMUN OK
-CALL asignarCursoEstudiante(101,'2S','a',202100001); -- AREA COMUN OK
-CALL asignarCursoEstudiante(101,'2S','a',202200001); -- AREA COMUN OK
+CALL asignarCursO(101,'2S','a',202000001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202100001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202200001); -- AREA COMUN OK
             -- AGREGAR A ESTUDIANTES 80 CREDITOS
-CALL asignarCursoEstudiante(778,'2S','a',202000001); -- AREA PROFESIONAL SISTEMAS OK
-CALL asignarCursoEstudiante(778,'2S','a',202000002); -- AREA PROFESIONAL SISTEMAS OK
-CALL asignarCursoEstudiante(778,'2S','a',202100001); -- AREA PROFESIONAL SISTEMAS ESTUDIANTE NO PUEDE LLEVAR CURSO DE OTRA CARRERA
-CALL asignarCursoEstudiante(101,'2S','a',202300001); -- AREA COMUN SE LLEGO AL LIMITE DE ASIGNADOS
-CALL asignarCursoEstudiante(101,'2S','a',202200001); -- AREA COMUN ESTUDIANTE YA ASIGNADO
-CALL asignarCursoEstudiante(101,'2S','a',123456789); -- CARNET NO EXISTE
-CALL asignarCursoEstudiante(101,'2S','Z',202800002); -- SECCION NO EXISTE
+CALL asignarCurso(778,'2S','a',202000001); -- AREA PROFESIONAL SISTEMAS OK
+CALL asignarCurso(778,'2S','a',202000002); -- AREA PROFESIONAL SISTEMAS OK
+CALL asignarCurso(778,'2S','a',202100001); -- AREA PROFESIONAL SISTEMAS ESTUDIANTE NO PUEDE LLEVAR CURSO DE OTRA CARRERA
+CALL asignarCurso(101,'2S','a',202300001); -- AREA COMUN SE LLEGO AL LIMITE DE ASIGNADOS
+CALL asignarCurso(101,'2S','a',202200001); -- AREA COMUN ESTUDIANTE YA ASIGNADO
+CALL asignarCurso(101,'2S','a',123456789); -- CARNET NO EXISTE
+CALL asignarCurso(101,'2S','Z',202800002); -- SECCION NO EXISTE
 
 -- DESASIGNAR CURSO ESTUDIANTE
-CALL desasignarCursoEstudiante(101,'2S','a',202200001); -- curso desasignado ok
-CALL desasignarCursoEstudiante(101,'2S','a',201709311); -- no existe el estudiante en la seccion
+CALL desasignarCurso(101,'2S','a',202200001); -- curso desasignado ok
+CALL desasignarCurso(101,'2S','a',201709311); -- no existe el estudiante en la seccion
 
 -- INGRESAR NOTA
 CALL ingresarNotas(101,'2S','a',202000001,-61); -- ERROR EN NOTA
@@ -76,8 +76,8 @@ CALL consultarEstudiante(202500001);
 CALL consultarDocente(1);
 CALL consultarDocente(100);
 -- CONSULTA 4
-CALL consultarEstudiantesAsignados(101, '2S', 2023, 'A');
-CALL consultarEstudiantesAsignados(778, '2S', 2023, 'A');
+CALL consultarsAsignados(101, '2S', 2023, 'A');
+CALL consultarAsignados(778, '2S', 2023, 'A');
 -- CONSULTA 5
 CALL consultarAprobacion(101, '2S', 2023, 'A');
 CALL consultarAprobacion(778, '2S', 2023, 'A');
