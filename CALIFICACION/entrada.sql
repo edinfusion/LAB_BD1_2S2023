@@ -34,7 +34,7 @@ CALL agregarHorario(1,100,"17:00-18:40"); -- dia fuera de rango
 
 -- ASIGNAR CURSO ESTUDIANTE
 -- codcurso, ciclo, seccion, carnet
-CALL asignarCursO(101,'2S','a',202000001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202000001); -- AREA COMUN OK
 CALL asignarCurso(101,'2S','a',202100001); -- AREA COMUN OK
 CALL asignarCurso(101,'2S','a',202200001); -- AREA COMUN OK
             -- AGREGAR A ESTUDIANTES 80 CREDITOS
@@ -51,10 +51,10 @@ CALL desasignarCurso(101,'2S','a',202200001); -- curso desasignado ok
 CALL desasignarCurso(101,'2S','a',201709311); -- no existe el estudiante en la seccion
 
 -- INGRESAR NOTA
-CALL ingresarNotas(101,'2S','a',202000001,-61); -- ERROR EN NOTA
-CALL ingresarNotas(101,'2S','a',202000001,61);
-CALL ingresarNotas(101,'2S','a',202100001,60.4);
-CALL ingresarNotas(101,'3S','a',202100001,60.4); -- ERROR
+CALL ingresarNota(101,'2S','a',202000001,-61); -- ERROR EN NOTA
+CALL ingresarNota(101,'2S','a',202000001,61);
+CALL ingresarNota(101,'2S','a',202100001,60.4);
+CALL ingresarNota(101,'3S','a',202100001,60.4); -- ERROR
 
 -- GENERAR ACTA
 CALL generarActa(101,'2S','a'); -- OK
@@ -76,7 +76,7 @@ CALL consultarEstudiante(202500001);
 CALL consultarDocente(1);
 CALL consultarDocente(100);
 -- CONSULTA 4
-CALL consultarsAsignados(101, '2S', 2023, 'A');
+CALL consultarAsignados(101, '2S', 2023, 'A');
 CALL consultarAsignados(778, '2S', 2023, 'A');
 -- CONSULTA 5
 CALL consultarAprobacion(101, '2S', 2023, 'A');
