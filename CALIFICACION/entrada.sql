@@ -13,15 +13,15 @@ CALL registrarDocente('Docente','De Calificacion','20-12-1980','docentecali@inge
 CALL registrarDocente('Docente3','Apellido3','20-12-1980','docente3@ingenieria.usac.edu.gt',12345678,'direcciondocente3',12345678912,3); -- YA EXISTE
 CALL registrarDocente('Docente con','correo incorrect','20-12-1980','docente3ingenieria.usac.edu.gt',12345678,'direcciondocente3',12345678912,20); -- CORREO INVALIDO
 -- AGREGAR CURSO
-CALL crearCurso(777,'Curso Calificacion',10,4,3,false); -- OK
+CALL crearCurso(778,'Curso Calificacion',10,4,3,false); -- OK
 CALL crearCurso(126,'Curso Industrial ENSEÑAR A DIBUJAR',2,4,2,true); -- YA EXISTE
 CALL crearCurso(503802,'curso negativo',-2,4,2,true); -- CURSO CON NUMEROS NEGATIVOS
 CALL crearCurso(503802,'curso sin carrera',2,4,1000,true); -- no existe carrera
 
 -- AGREGAR CURSO HABILITADO
 CALL habilitarCurso(101,'2S',100,3,'A'); -- OK AREA COMUN
-CALL habilitarCurso(777,'2S',1,2,'A'); -- OK AREA PROFESIONAL SISTEMAS
-CALL habilitarCurso(777,'2S',1,2,'A'); -- SECCION REPETIDA
+CALL habilitarCurso(778,'2S',1,2,'A'); -- OK AREA PROFESIONAL SISTEMAS
+CALL habilitarCurso(778,'2S',1,2,'A'); -- SECCION REPETIDA
 CALL habilitarCurso(503802,'2S',1,2,'A'); -- CURSO NO EXISTE
 CALL habilitarCurso(101,'2S',100,-3,'B'); -- CUPOMAX NEGATIVO
 CALL habilitarCurso(101,'2S',100,3,'2'); -- SECCION NO ES UNA LETRA
@@ -34,31 +34,31 @@ CALL agregarHorario(1,100,"17:00-18:40"); -- dia fuera de rango
 
 -- ASIGNAR CURSO ESTUDIANTE
 -- codcurso, ciclo, seccion, carnet
-CALL asignarCursoEstudiante(101,'2S','a',202000001); -- AREA COMUN OK
-CALL asignarCursoEstudiante(101,'2S','a',202100001); -- AREA COMUN OK
-CALL asignarCursoEstudiante(101,'2S','a',202200001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202000001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202100001); -- AREA COMUN OK
+CALL asignarCurso(101,'2S','a',202200001); -- AREA COMUN OK
             -- AGREGAR A ESTUDIANTES 80 CREDITOS
-CALL asignarCursoEstudiante(777,'2S','a',202000001); -- AREA PROFESIONAL SISTEMAS OK
-CALL asignarCursoEstudiante(777,'2S','a',202000002); -- AREA PROFESIONAL SISTEMAS OK
-CALL asignarCursoEstudiante(777,'2S','a',202100001); -- AREA PROFESIONAL SISTEMAS ESTUDIANTE NO PUEDE LLEVAR CURSO DE OTRA CARRERA
-CALL asignarCursoEstudiante(101,'2S','a',202300001); -- AREA COMUN SE LLEGO AL LIMITE DE ASIGNADOS
-CALL asignarCursoEstudiante(101,'2S','a',202200001); -- AREA COMUN ESTUDIANTE YA ASIGNADO
-CALL asignarCursoEstudiante(101,'2S','a',123456789); -- CARNET NO EXISTE
-CALL asignarCursoEstudiante(101,'2S','Z',202800002); -- SECCION NO EXISTE
+CALL asignarCurso(778,'2S','a',202000001); -- AREA PROFESIONAL SISTEMAS OK
+CALL asignarCurso(778,'2S','a',202000002); -- AREA PROFESIONAL SISTEMAS OK
+CALL asignarCurso(778,'2S','a',202100001); -- AREA PROFESIONAL SISTEMAS ESTUDIANTE NO PUEDE LLEVAR CURSO DE OTRA CARRERA
+CALL asignarCurso(101,'2S','a',202300001); -- AREA COMUN SE LLEGO AL LIMITE DE ASIGNADOS
+CALL asignarCurso(101,'2S','a',202200001); -- AREA COMUN ESTUDIANTE YA ASIGNADO
+CALL asignarCurso(101,'2S','a',123456789); -- CARNET NO EXISTE
+CALL asignarCurso(101,'2S','Z',202800002); -- SECCION NO EXISTE
 
 -- DESASIGNAR CURSO ESTUDIANTE
-CALL desasignarCursoEstudiante(101,'2S','a',202200001); -- curso desasignado ok
-CALL desasignarCursoEstudiante(101,'2S','a',201709311); -- no existe el estudiante en la seccion
+CALL desasignarCurso(101,'2S','a',202200001); -- curso desasignado ok
+CALL desasignarCurso(101,'2S','a',201709311); -- no existe el estudiante en la seccion
 
 -- INGRESAR NOTA
-CALL ingresarNotas(101,'2S','a',202000001,-61); -- ERROR EN NOTA
-CALL ingresarNotas(101,'2S','a',202000001,61);
-CALL ingresarNotas(101,'2S','a',202100001,60.4);
-CALL ingresarNotas(101,'3S','a',202100001,60.4); -- ERROR
+CALL ingresarNota(101,'2S','a',202000001,-61); -- ERROR EN NOTA
+CALL ingresarNota(101,'2S','a',202000001,61);
+CALL ingresarNota(101,'2S','a',202100001,60.4);
+CALL ingresarNota(101,'3S','a',202100001,60.4); -- ERROR
 
 -- GENERAR ACTA
 CALL generarActa(101,'2S','a'); -- OK
-CALL generarActa(777,'2S','a'); -- NO SE HA INGRESADO NOTAS
+CALL generarActa(778,'2S','a'); -- NO SE HA INGRESADO NOTAS
 
 
 -- CALIFICACION DE PROCESAMIENTO DE DATOS
@@ -76,14 +76,14 @@ CALL consultarEstudiante(202500001);
 CALL consultarDocente(1);
 CALL consultarDocente(100);
 -- CONSULTA 4
-CALL consultarEstudiantesAsignados(101, '2S', 2023, 'A');
-CALL consultarEstudiantesAsignados(777, '2S', 2023, 'A');
+CALL consultarAsignados(101, '2S', 2023, 'A');
+CALL consultarAsignados(778, '2S', 2023, 'A');
 -- CONSULTA 5
 CALL consultarAprobacion(101, '2S', 2023, 'A');
-CALL consultarAprobacion(777, '2S', 2023, 'A');
+CALL consultarAprobacion(778, '2S', 2023, 'A');
 -- CONSULTA 6
 CALL consultarActas(101);
-CALL consultarActas(777);
+CALL consultarActas(778);
 -- CONSULTA 7
 call consultarDesasignacion(101, '2S', 2023, 'A');
-call consultarDesasignacion(777, '2S', 2023, 'A');
+call consultarDesasignacion(778, '2S', 2023, 'A');
